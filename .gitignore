@@ -1,0 +1,9 @@
+#java中间件
+target/
+#nodejs依赖
+frontend/node_modules
+node_modules
+#IDE配置
+.idea/
+#云构建
+src/main/resources/Application.yml

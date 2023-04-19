@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  mysql:
+    container_name: sh
+    ports:
+      - "3306:3306"
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 424727
+      MYSQL_DATABASE: select_house
+
+  redis:
+    container_name: jxx
+    ports:
+      - "6379:6379"
+    image: redis:5
