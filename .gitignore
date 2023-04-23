@@ -5,5 +5,3 @@ frontend/node_modules
 node_modules
 #IDE配置
 .idea/
-#云构建
-src/main/resources/Application.yml
