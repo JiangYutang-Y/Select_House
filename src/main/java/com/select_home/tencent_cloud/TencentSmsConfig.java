@@ -1,4 +1,4 @@
-package com.Select_Home.TencentCloud;
+package com.select_home.TencentCloud;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

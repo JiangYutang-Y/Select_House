@@ -1,7 +1,5 @@
-package com.Select_Home.TencentCloud;
+package com.select_home.TencentCloud;
 
-import com.Select_Home.Base.BusinessException;
-import com.Select_Home.Base.Status;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
 import com.tencentcloudapi.common.profile.HttpProfile;

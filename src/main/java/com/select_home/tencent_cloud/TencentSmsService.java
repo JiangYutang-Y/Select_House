@@ -1,4 +1,4 @@
-package com.Select_Home.TencentCloud;
+package com.select_home.TencentCloud;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
