@@ -2,10 +2,10 @@ version: "3.9"
 services:
   mysql:
     ports:
-      - "3306:3306"
-    image: mariadb:10.4
+      - "3307:3307"
+    image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 424727
       MYSQL_DATABASE: test
 
   redis:
