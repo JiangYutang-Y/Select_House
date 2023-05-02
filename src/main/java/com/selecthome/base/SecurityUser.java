@@ -3,30 +3,34 @@ package com.selecthome.base;
 import com.selecthome.entity.Role;
 import com.selecthome.entity.User;
 import org.springframework.security.core.GrantedAuthority;
-
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SecurityUser implements UserDetails {
     private User user;
     private List<Role> roles;
 
-    public SecurityUser(User user,List<Role> roles) {
+    public SecurityUser(User user, List<Role> roles) {
         this.user = user;
         this.roles = roles;
     }
 
-    public User getUser(){
+    public User getUser() {
         return this.user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() { //用户权限
-        return this.roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
+        return roles.stream()
+                .flatMap(r -> Stream.concat(
+                        Stream.of("ROLE_" + r.getName()), // 赋予角色
+                        Stream.of(r.getName()) // 赋予权限
+                )).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
         //        return Collections.emptyList();//权限设空
     }
 

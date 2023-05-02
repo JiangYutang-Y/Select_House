@@ -2,15 +2,31 @@ package com.selecthome.entity;
 
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
-public class Role{
+public class Role {
     public static final String USER = "user";
+    public static final String ADMIN = "admin";
+
+    public static final String USER_HOUSE_WRITE = "house:write";
+    public static final String USER_HOUSE_READ = "house:read";
+
+    public static List<String> getAuthorities(String name) {
+        switch (name) {
+            case USER:
+                return Arrays.asList(USER_HOUSE_READ);
+            case ADMIN:
+                return Arrays.asList(USER_HOUSE_WRITE, USER_HOUSE_READ);
+            default:
+                return Collections.emptyList();
+        }
+    }
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long userId;
     private String name;

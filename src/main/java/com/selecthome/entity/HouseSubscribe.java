@@ -1,16 +1,15 @@
 package com.selecthome.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 public class HouseSubscribe {
     @Id
-    @GeneratedValue
     private Long id;
     private Long houseId;
+    private Long userId;
     private String description;
     private Integer status;
     private Date createTime;
@@ -80,5 +79,13 @@ public class HouseSubscribe {
 
     public void setAdminId(Integer adminId) {
         this.adminId = adminId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

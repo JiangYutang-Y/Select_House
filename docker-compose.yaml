@@ -1,14 +1,31 @@
 version: "3.9"
 services:
   mysql:
+    container_name: mysql
     ports:
-      - "3307:3307"
-    image: mysql:5.7
+      - "3306:3306"
+    build:
+      context: ./dev/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 424727
-      MYSQL_DATABASE: test
-
+      MYSQL_ROOT_PASSWORD: 123456
   redis:
+    container_name: redis
     ports:
       - "6379:6379"
     image: redis:5
+  elasticsearch:
+    build:
+      context: ./dev/elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: single-node
+  kafka:
+    image: bitnami/kafka:3.4.0
+    ports:
+      - "9092:9092"
+    environment:
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://:9092

@@ -1,18 +1,16 @@
 package com.selecthome.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class HousePicture {
     @Id
-    @GeneratedValue
     private Long id;
     private Long houseId;
     private String cdnPrefix;
     private Integer width;
-    private String height;
+    private Integer height;
     private String location;
     private String path;
 
@@ -48,11 +46,11 @@ public class HousePicture {
         this.width = width;
     }
 
-    public String getHeight() {
+    public Integer getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(Integer height) {
         this.height = height;
     }
 

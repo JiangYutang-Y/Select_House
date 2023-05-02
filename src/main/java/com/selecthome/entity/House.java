@@ -1,15 +1,12 @@
 package com.selecthome.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.xml.crypto.Data;
 import java.util.Date;
 
 @Entity
 public class House {
     @Id
-    @GeneratedValue
     private Long id;
     private String title;
     private Integer price;
@@ -23,8 +20,8 @@ public class House {
     private Integer status;
     private Date createTime;
     private Date lastUpdateTime;
-    private String cityName;
-    private String regionalName;
+    private String cityEnName;
+    private String regionEnName;
     private String cover;
     private Integer direction;
     private Integer distanceToSubway;
@@ -138,20 +135,20 @@ public class House {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getCityEnName() {
+        return cityEnName;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityEnName(String cityEnName) {
+        this.cityEnName = cityEnName;
     }
 
-    public String getRegionalName() {
-        return regionalName;
+    public String getRegionEnName() {
+        return regionEnName;
     }
 
-    public void setRegionalName(String regionalName) {
-        this.regionalName = regionalName;
+    public void setRegionEnName(String regionEnName) {
+        this.regionEnName = regionEnName;
     }
 
     public String getCover() {
