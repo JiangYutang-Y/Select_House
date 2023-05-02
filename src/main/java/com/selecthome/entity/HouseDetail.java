@@ -1,25 +1,25 @@
 package com.selecthome.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class HouseDetail {
     @Id
-    @GeneratedValue
     private Long id;
     private String description;
     private String layoutDesc;
     private String traffic;
     private String roundService;
     private Integer rentWay;
-    private String address;
-    private Integer subwayLineId;
-    private String subwayName;
-    private Integer subwayStationId;
+    private Long subwayLineId;
+    private String subwayLineName;
+    private Long subwayStationId;
     private String subwayStationName;
-    private Long houseId;  //关联House,一对一关系
+    private Long houseId;
+    @Column(name = "address")
+    private String detailAddress;
 
     public Long getId() {
         return id;
@@ -69,35 +69,35 @@ public class HouseDetail {
         this.rentWay = rentWay;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDetailAddress() {
+        return detailAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDetailAddress(String address) {
+        this.detailAddress = address;
     }
 
-    public Integer getSubwayLineId() {
+    public Long getSubwayLineId() {
         return subwayLineId;
     }
 
-    public void setSubwayLineId(Integer subwayLineId) {
+    public void setSubwayLineId(Long subwayLineId) {
         this.subwayLineId = subwayLineId;
     }
 
-    public String getSubwayName() {
-        return subwayName;
+    public String getSubwayLineName() {
+        return subwayLineName;
     }
 
-    public void setSubwayName(String subwayName) {
-        this.subwayName = subwayName;
+    public void setSubwayLineName(String subwayLineName) {
+        this.subwayLineName = subwayLineName;
     }
 
-    public Integer getSubwayStationId() {
+    public Long getSubwayStationId() {
         return subwayStationId;
     }
 
-    public void setSubwayStationId(Integer subwayStationId) {
+    public void setSubwayStationId(Long subwayStationId) {
         this.subwayStationId = subwayStationId;
     }
 

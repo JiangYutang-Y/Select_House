@@ -1,17 +1,16 @@
 package com.selecthome.service.impl;
 
-import com.selecthome.base.SonyflakeIdWorker;
 import com.selecthome.entity.Role;
 import com.selecthome.entity.User;
 import com.selecthome.repository.RoleRepository;
 import com.selecthome.repository.UserRepository;
 import com.selecthome.service.SmsService;
 import com.selecthome.service.UserService;
+import com.selecthome.utils.IDUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -21,8 +20,6 @@ public class UserServiceImpl implements UserService {
     private final SmsService smsService;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
-    private static SonyflakeIdWorker sonyflakeIdWorker = new SonyflakeIdWorker();//生成唯一Id
 
     public UserServiceImpl(RedisTemplate<String, String> redisTemplate,
                            SmsService smsService, UserRepository userRepository, RoleRepository roleRepository) {
@@ -54,15 +51,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User registerByPhoneNumber(String phone) {
         User user = new User();
-//        user.setId(System.currentTimeMillis());
-        user.setId(sonyflakeIdWorker.nextId());
+        user.setId(IDUtils.generateId());
         user.setName(phone);
         user.setPhoneNumber(phone);
         user.setCreateTime(new Date());
         Role r = new Role();
         r.setName(Role.USER);
-//        r.setId(System.currentTimeMillis());
-        r.setId(sonyflakeIdWorker.nextId());
+        r.setId(IDUtils.generateId());
         r.setUserId(user.getId());
         roleRepository.save(r);
         return userRepository.save(user);
