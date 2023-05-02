@@ -32,7 +32,7 @@ export async function loginWithSmsCode(form) {
     let d = new FormData()
     d.set("phone",form.phone)
     d.set("code",form.code)
-    let rsp = await fetch('/api/sessionsSms?method=sms', {
+    let rsp = await fetch('/api/sessions?method=sms', {
         method:'POST',
         credentials:'include',
         body:d,

@@ -1,9 +1,9 @@
 # tencent.yml 的示例文件，如果需要使用 tencent cloud sms 服务，需要将填写此文件配置并复制到 tencent.yml 中
 tencent:
   sms:
-    secret-id: xxx
-    secret-key: xxx
-    sdk-app-id: xxx
-    sdk-app-key: xxx
-    template-id: xxx
-    sign: xxx
+    secretId: your_secret_id
+    secretKey: your_secret_key
+    sdkAppId: your_sdk_app_id
+    sdkAppKey: your_sdk_app_key
+    templateId: your_template_id
+    sign: your_sign

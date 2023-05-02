@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -80,12 +81,17 @@ public class SmsCodeFilter extends AbstractAuthenticationProcessingFilter {
         code = (code != null) ? code.trim() : "";//去掉首尾字符
 //      SmsCodeAuthenticationToken token = new SmsCodeAuthenticationToken(phone); 获取未授权Token
 
+        //检查手机号，没有的话注册一个
+        User user = userRepository.findByPhoneNumber(phone);
+        if(user == null){
+            user = userService.registerByPhoneNumber(phone);
+            }
+
         //校验验证码
         String storedCode = userService.getVerificationCode(phone);
         if (storedCode == null || !storedCode.equals(code)) {
             throw new BadCredentialsException("验证码错误");
         }
-        User user = userService.registerByPhoneNumber(phone);
         return new SmsCodeAuthenticationToken(new SecurityUser(user, roleRepository.findAllByUserId(user.getId())));
     }
 }

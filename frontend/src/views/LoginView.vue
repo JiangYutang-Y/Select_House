@@ -22,7 +22,7 @@ const data = reactive({
 async function sendSmsCode() {
   try {
     // 调用后端接口发送验证码
-    const response = await fetch(`/api/users/sms?phoneNumber=${data.smsForm.phone}`, {
+    const response = await fetch(`/api/sms/request_verification?phoneNumber=${data.smsForm.phone}`, {
       method: 'POST',
     });
 

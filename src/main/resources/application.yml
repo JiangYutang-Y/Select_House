@@ -1,12 +1,16 @@
 spring:
   datasource:
     username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/test
+    password: 424727
+    url: jdbc:mysql://localhost:3307/test
   jpa:
     hibernate:
       ddl-auto: update
+  config:
+    import: classpath:tencent.yml
+server:
+  port: 8081
 # 开启腾讯云短信验证码服务
-# app:
-#   sms:
-#     provider: tencent
+app:
+  sms:
+    provider: tencent
