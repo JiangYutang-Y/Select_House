@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/test
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092
+    consumer:
+      group-id: soufang
+  elasticsearch:
+    uris: localhost:9200
+app:
+  dev:
+    init-elasticsearch: "true"
+  sms:
+    provider: none

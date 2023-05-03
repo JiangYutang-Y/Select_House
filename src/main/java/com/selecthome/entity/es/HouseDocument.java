@@ -9,6 +9,10 @@ import org.springframework.data.elasticsearch.core.suggest.Completion;
 
 @Document(indexName = "house")
 public class HouseDocument {
+    public static final String KEY_CITI_EN_NAME = "cityEnName";
+    public static final String KEY_REGION_EN_NAME = "regionEnName";
+    public static final String KEY_TITLE = "title";
+
     @CompletionField
     private Completion suggest;
     /**
