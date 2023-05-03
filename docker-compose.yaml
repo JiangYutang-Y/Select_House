@@ -8,11 +8,21 @@ services:
       context: ./dev/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 123456
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1024m
   redis:
     container_name: redis
     ports:
       - "6379:6379"
     image: redis:5
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512m
   elasticsearch:
     build:
       context: ./dev/elasticsearch
@@ -21,6 +31,11 @@ services:
       - "9300:9300"
     environment:
       discovery.type: single-node
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1024m
   kafka:
     image: bitnami/kafka:3.4.0
     ports:
@@ -28,4 +43,4 @@ services:
     environment:
       ALLOW_PLAINTEXT_LISTENER: "yes"
       KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
-      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://:9092
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092

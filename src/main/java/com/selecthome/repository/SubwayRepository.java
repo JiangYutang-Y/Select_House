@@ -27,7 +27,7 @@ public interface SubwayRepository extends JpaRepository<Subway,Long> {
 
     // select * from subway where city = ?
 
-    List<Subway> findByCityName(String cityName);
+    List<Subway> findByCityEnName(String cityEnName);
 
     // findByCityEnNameAndName
     // find -> select id,city_en_name,name
@@ -41,10 +41,10 @@ public interface SubwayRepository extends JpaRepository<Subway,Long> {
     // 返回值还支持集合 ： List,Set -> new 集合，并将所有的行 都会塞进集合里。
     //    List<Subway> findByCityEnNameAndName(String city, String name);
     //
-    Subway findByCityNameAndName(String cityS, String name);
+    Subway findByCityEnNameAndName(String cityS, String name);
 
 
     // 返回值还支持 Page -> 根据参数（必要）进行分页
-    Page<Subway> findAll(Pageable pageable);
+    // Page<Subway> findAll(Pageable pageable);
 
 }

@@ -34,7 +34,7 @@ docker-compose.yaml -- docker 容器编排文件，实现本地一键拉起开�
 启动开发环境
 
 ```shell
-docker-compose up -d --build
+docker-compose up -d --force-recreate --build
 ```
 
 启动后端服务

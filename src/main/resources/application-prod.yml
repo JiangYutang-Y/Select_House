@@ -1,0 +1,4 @@
+# 开启腾讯云短信验证码服务
+app:
+  sms:
+    provider: tencent
